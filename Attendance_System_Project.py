@@ -22,7 +22,11 @@ def calculateEncodings(images):
     for img in images:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         encode = face_recognition.face_encodings(img)[0]
-        encodeList.append(encode)
+        if len(encode) > 0:
+            encode = encode[0]
+            encodeList.append(encode)
+        else:
+            print("\"")
     return encodeList
 
 
